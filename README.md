@@ -5,8 +5,7 @@ Local Bluetooth Low Energy control of DuoCo StripX LED strip controllers that ad
 **Status: 0.1.0, pre-release.** Verified on one controller; protocol is derived from the vendor app's published command layout, and not every mode has been confirmed on hardware.
 
 ## Compatibility and testing
-- HACS/Home Assistant minimum is declared as 2025.1.0; that minimum is **untested**.
-- Automated tests ran against Home Assistant 2026.2.3, and module import was checked on 2026.8.2. This does not mean the integration is fully functional on all versions.
+- Declared Home Assistant minimum (`hacs.json`) is 2026.2.3, the version the automated tests ran against. Module import was also checked on 2026.8.2. Older versions (e.g. 2025.1) are untested and not claimed to work.
 - Hardware verification covers one controller only. The 213 app-derived effect IDs are available; 210 are enabled by default and the 3 strobe IDs (196-198) are hidden unless enabled. No hardware claim is made for every effect.
 - No LICENSE file is included; no license has been chosen, so reuse rights are not granted by this repository's visibility alone.
 
@@ -23,8 +22,22 @@ Local Bluetooth Low Energy control of DuoCo StripX LED strip controllers that ad
 - Each command connects, writes (write-without-response, GATT `fff3`), and disconnects, so the phone app can still be used between commands. Availability comes from passive Bluetooth advertisements. A failed command raises an error, marks the entity unavailable until the device is seen again, and forgets the assumed values.
 - Requires a Home Assistant Bluetooth adapter or proxy in range.
 
-## Install (HACS custom repository or manual)
-Copy `custom_components/duoco_stripx` to your config directory, restart, then add the integration. Enter the controller's Bluetooth address and confirm you own it. Discovery of nearby `MELK-OA21` devices only *prompts*; nothing is added or controlled without confirmation.
+## Installation
+### HACS (custom repository)
+Requires [HACS](https://www.hacs.dev/). This repository is **not** in the HACS default catalog, so add it manually:
+
+[![Open your Home Assistant instance and open this repository in HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=tgmstudios&repository=duoco-stripx-ha&category=integration)
+
+1. HACS → ⋮ (top right) → **Custom repositories**, or use the badge above.
+2. Repository: `https://github.com/tgmstudios/duoco-stripx-ha`, Type: **Integration**, then **Add**.
+3. Find **DuoCo StripX (MELK-OA21)** in HACS, **Download**, and restart Home Assistant.
+4. Settings → Devices & services → **Add integration** → DuoCo StripX (MELK-OA21).
+Enter the controller's Bluetooth address and confirm you own it. Discovery of nearby `MELK-OA21` devices only *prompts*; nothing is added or controlled without confirmation.
+
+### Manual
+Copy `custom_components/duoco_stripx` into your Home Assistant `config/custom_components/` directory, restart, then add the integration.
+
+HACS installs from the latest GitHub release if one exists, otherwise from the default branch. Packaging checks (HACS validation, hassfest, tests) run in GitHub Actions; the integration has not been installed through HACS on a live Home Assistant by the author.
 
 ## Protocol (9-byte frames, characteristic `0000fff3-0000-1000-8000-00805f9b34fb`)
 | Action | Frame |
