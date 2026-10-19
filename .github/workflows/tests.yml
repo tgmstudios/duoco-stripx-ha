@@ -19,6 +19,6 @@ jobs:
       - name: Install (versions the tests were run against)
         run: |
           python -m pip install --upgrade pip
-          pip install pytest-homeassistant-custom-component==0.13.316
+          pip install pytest-homeassistant-custom-component==0.13.316 aiousbwatcher==1.1.2 pyserial==3.5
       - name: Run tests
         run: python -m pytest tests -q -W error::RuntimeWarning
