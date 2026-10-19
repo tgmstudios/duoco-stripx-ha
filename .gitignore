@@ -1,0 +1,15 @@
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+htmlcov/
+*.key
+*.pem
+.env
+captures/
+capture/
+*.pcap
+*.btsnoop
+*.log

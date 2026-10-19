@@ -1,0 +1,55 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "title": "Add DuoCo StripX (MELK-OA21)",
+        "description": "Enter the Bluetooth address of a controller you own. Setup only connects to read the firmware string; it does not change the lights.",
+        "data": {
+          "address": "Bluetooth address",
+          "name": "Name",
+          "confirm_owned": "I own this controller and want Home Assistant to control it"
+        }
+      },
+      "bluetooth_confirm": {
+        "title": "Add discovered DuoCo StripX",
+        "description": "A MELK-OA21 controller was found nearby. Nothing is added or controlled until you confirm that you own it.",
+        "data": {
+          "name": "Name",
+          "confirm_owned": "I own this controller and want Home Assistant to control it"
+        }
+      }
+    },
+    "error": {
+      "invalid_address": "Enter a Bluetooth address like AA:BB:CC:DD:EE:FF.",
+      "invalid_name": "Enter a name.",
+      "name_exists": "An entry with this name already exists.",
+      "ownership_required": "Confirm that you own this controller.",
+      "cannot_connect": "Could not connect. Make sure it is powered, in range of a Home Assistant Bluetooth adapter, and not connected to a phone app."
+    },
+    "abort": {
+      "already_configured": "This controller is already configured.",
+      "not_supported": "Only MELK-OA21 controllers are supported."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "DuoCo StripX options",
+        "data": {
+          "allow_flashing_effects": "Allow strobe/flashing effects"
+        },
+        "data_description": {
+          "allow_flashing_effects": "Strobe effects are hidden by default because rapid flashing can be unsafe for people with photosensitivity."
+        }
+      }
+    }
+  },
+  "entity": {
+    "number": {
+      "effect_speed": {
+        "name": "Effect speed"
+      }
+    }
+  }
+}
