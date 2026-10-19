@@ -20,8 +20,10 @@ jobs:
         uses: hacs/action@main
         with:
           category: integration
-          # Not submitted to home-assistant/brands (custom repository only).
-          ignore: brands
+          # brands: not submitted to home-assistant/brands (custom repository only).
+          # license: the owner has not chosen a license yet; none is invented here.
+          # Remove 'license' from this list once a LICENSE file is added.
+          ignore: brands license
 
   hassfest:
     name: Hassfest

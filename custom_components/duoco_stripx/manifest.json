@@ -1,14 +1,23 @@
 {
   "domain": "duoco_stripx",
   "name": "DuoCo StripX (MELK-OA21)",
-  "codeowners": ["@tgmstudios"],
+  "bluetooth": [
+    {
+      "local_name": "MELK-OA21*",
+      "connectable": true
+    }
+  ],
+  "codeowners": [
+    "@tgmstudios"
+  ],
   "config_flow": true,
-  "dependencies": ["bluetooth"],
+  "dependencies": [
+    "bluetooth"
+  ],
   "documentation": "https://github.com/tgmstudios/duoco-stripx-ha",
-  "issue_tracker": "https://github.com/tgmstudios/duoco-stripx-ha/issues",
-  "bluetooth": [{"local_name": "MELK-OA21*", "connectable": true}],
   "integration_type": "device",
   "iot_class": "assumed_state",
+  "issue_tracker": "https://github.com/tgmstudios/duoco-stripx-ha/issues",
   "requirements": [],
   "version": "0.1.0"
 }
